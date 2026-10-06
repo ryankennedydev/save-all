@@ -1,22 +1,47 @@
-import React from 'react'
-import { BiSun, BiMoon,BiBookmark } from 'react-icons/bi'
+import React from "react";
+import { BiSun, BiMoon, BiBookmark } from "react-icons/bi";
 
-export const Navbar = ({darkmode, setDarkmode},activesave, setActiveSave) => {
+const display = { fontFamily: 'Georgia, "Times New Roman", serif' };
+
+export const Navbar = ({ darkmode, setDarkmode }) => {
+  const dark = darkmode !== false;
+
   return (
-    <main className={`w-full border-b border-stone-500/30 p-5 justify-between flex items-center top-0  z-100  blur-shadow-2xl ${darkmode === false ? 'bg-stone-100' : 'bg-stone-950/90'} `}>
-        
-        <div className='flex gap-2 items-center'>
-            <div className='bg-blue-500 p-3 rounded-lg'>
-            <BiBookmark size={20} className='text-stone-100'/>
+    <header
+      className={`sticky top-0 z-50 w-full border-b transition-colors duration-300 ease-in ${
+        dark ? "border-white/10 bg-[#1B1818]" : "border-[#1F1A2E]/10 bg-[#F6F3EE]"
+      }`}
+    >
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-4 sm:px-10">
+        {/* logo */}
+        <div className="flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-300">
+            <BiBookmark size={22} className="text-[#1F1A2E]" />
+          </div>
+          <span
+            style={display}
+            className={`text-[26px] font-bold leading-none tracking-tight ${
+              dark ? "text-stone-100" : "text-[#1F1A2E]"
+            }`}
+          >
+            Save<em className="font-normal italic">all</em>
+          </span>
+        </div>
 
-            </div>
-            <h1 className='text-stone-400 text-[30px] font-bold '>SAVE<span className='text-blue-600'>ALL</span></h1>
-        </div>
-        <div>
-            <button onClick={() => setDarkmode(!darkmode)}  className={`border-1 rounded-2xl cursor-pointer transition-all duration-150 ease-in hover:opacity-70 ${darkmode === false ? 'border-stone-950 text-blue-400 bg-stone-950' : 'border-stone-100 bg-stone-100 text-blue-600 transition-all duration-300 ease-in'}`}>
-                {darkmode === false ? <BiSun size={45} className='p-2'/> : <BiMoon size={45} className='p-2'/>}
-            </button>
-        </div>
-    </main>
-)
-}
+        {/* tema */}
+        <button
+          type="button"
+          onClick={() => setDarkmode(!darkmode)}
+          aria-label={dark ? "Mudar para o tema claro" : "Mudar para o tema escuro"}
+          className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-400 ${
+            dark
+              ? "bg-white/10 text-stone-200 hover:bg-white/15"
+              : "bg-[#1F1A2E]/10 text-[#1F1A2E] hover:bg-[#1F1A2E]/15"
+          }`}
+        >
+          {dark ? <BiMoon size={22} /> : <BiSun size={22} />}
+        </button>
+      </div>
+    </header>
+  );
+};

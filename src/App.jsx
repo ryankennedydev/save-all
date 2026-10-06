@@ -30,7 +30,7 @@ function App() {
 
         <Route
           path="/card"
-          element={<Card valueCheck={valueCheck} setValueCheck={setValueCheck} />}
+          element={<Card valueCheck={valueCheck} setValueCheck={setValueCheck} darkmode={darkmode} setDarkmode={setDarkmode} />}
         />
       </Routes>
     </BrowserRouter>
