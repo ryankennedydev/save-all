@@ -90,7 +90,7 @@ export const Home = ({ darkmode, setDarkmode ,valueCheck, setValueCheck}) => {
                   <main className="flex flex-col gap-2 p-5">
                     <div>
                       <h2
-                        className="font-bold text-[15px]"
+                        className="font-bold text-[13px]"
                         style={{ color: item.color }}
                       >
                         {item.category.toUpperCase()}
@@ -110,12 +110,12 @@ export const Home = ({ darkmode, setDarkmode ,valueCheck, setValueCheck}) => {
                         <div className="flex gap-2 items-center font-bold">
                           <BiCalendar className="text-stone-600" />
                           <h1 className="text-stone-600">
-                            Created: {new Date(item.data).toLocaleDateString("pt-BR")}
+                            {new Date(item.data).toLocaleDateString("pt-BR")}
                           </h1>
                         </div>
                       </div>
                       <div>
-                        <button onClick={(e) => setValueCheck(item)} className="underline cursor-pointer pt-1">
+                        <button onClick={(e) => {setValueCheck(item); navigate('/card')}} className="underline cursor-pointer pt-1">
                           <BiArrowBack
                             className="p-2 rounded-full rotate-180 text-stone-100 font-bold hover:rotate-160 transition-all duration-200 ease-in"
                             style={{ backgroundColor: item.color }}
