@@ -15,17 +15,16 @@ export const Savecreate = ({ activesave, setActiveSave, onCardCreated }) => {
     { nome: "Rosa", valor: "#F9C5D1" },
     { nome: "Pêssego", valor: "#FAD7A0" },
     { nome: "Amarelo", valor: "#F9E79F" },
-    { nome: "Verde", valor: "#C8E6C9" },
-    { nome: "Turquesa", valor: "#B2DFDB" },
-    { nome: "Azul", valor: "#B3E5FC" },
-    { nome: "Azul Lavanda", valor: "#C5CAE9" },
-    { nome: "Lavanda", valor: "#D1C4E9" },
-    { nome: "Lilás", valor: "#E1BEE7" },
-    { nome: "Rosa Claro", valor: "#F8BBD0" },
-    { nome: "Bege", valor: "#D7CCC8" },
-    { nome: "Cinza Azulado", valor: "#CFD8DC" },
+    { nome: "Verde", valor: "#66BB6A" },
+    { nome: "Turquesa", valor: "#26A69A" },
+    { nome: "Azul", valor: "#42A5F5" },
+    { nome: "Roxo", valor: "#7E57C2" },
+    { nome: "Vermelho", valor: "#EF5350" },
+    { nome: "Laranja", valor: "#FF7043" },
+    { nome: "Vinho", valor: "#880E4F" },
+    { nome: "Azul Marinho", valor: "#0D47A1" },
+    { nome: "Cinza", valor: "#757575" },
   ];
-
   async function CreateCard() {
     if (tittleValue && DescriptionValue && CattegoryValue && colorValue) {
       try {
@@ -44,6 +43,11 @@ export const Savecreate = ({ activesave, setActiveSave, onCardCreated }) => {
         });
 
         await onCardCreated();
+
+        setTittleValue("");
+        SetDescriptionValue("");
+        SetCategoryValue("");
+        setImageValue("");
         setActiveSave(true);
       } catch (error) {
         console.log("Card not created:", error);

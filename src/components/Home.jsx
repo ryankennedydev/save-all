@@ -7,10 +7,13 @@ import { CgCalendar } from "react-icons/cg";
 import imagempadrao from "../assets/imagempadrao.svg";
 import { Savecreate } from "./Savecreate";
 import { MdMore } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
-export const Home = ({ darkmode, setDarkmode }) => {
+export const Home = ({ darkmode, setDarkmode ,valueCheck, setValueCheck}) => {
   const [filtersearch, setFilter] = useState("");
   const [activesave, setActiveSave] = useState(true);
+
+  const navigate = useNavigate()
 
   const [cards, setCards] = useState([]);
   async function getCards() {
@@ -63,7 +66,7 @@ export const Home = ({ darkmode, setDarkmode }) => {
         </div>
 
         {cards.length > 0 ? (
-          <main className="grid-cols-1 sm:grid-cols-3 gap-5 grid">
+          <main className="grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 grid">
             {cards
               .filter(
   (e) =>
@@ -112,9 +115,9 @@ export const Home = ({ darkmode, setDarkmode }) => {
                         </div>
                       </div>
                       <div>
-                        <button className="underline cursor-pointer pt-1">
+                        <button onClick={(e) => setValueCheck(item)} className="underline cursor-pointer pt-1">
                           <BiArrowBack
-                            className="p-2 rounded-full rotate-180 text-stone-600 hover:rotate-160 transition-all duration-200 ease-in"
+                            className="p-2 rounded-full rotate-180 text-stone-100 font-bold hover:rotate-160 transition-all duration-200 ease-in"
                             style={{ backgroundColor: item.color }}
                             size={40}
                           />

@@ -4,6 +4,7 @@ import { BiSun, BiMoon,BiBookmark } from 'react-icons/bi'
 export const Navbar = ({darkmode, setDarkmode},activesave, setActiveSave) => {
   return (
     <main className={`w-full border-b border-stone-500/30 p-5 justify-between flex items-center top-0  z-100  blur-shadow-2xl ${darkmode === false ? 'bg-stone-100' : 'bg-stone-950/90'} `}>
+        
         <div className='flex gap-2 items-center'>
             <div className='bg-blue-500 p-3 rounded-lg'>
             <BiBookmark size={20} className='text-stone-100'/>
