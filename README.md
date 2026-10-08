@@ -11,8 +11,8 @@ Save-All allows users to create cards with a title, description, category, image
 ### Cards
 
 <p align="center">
-  <img src="./src/assets/example1.png" width="48%" />
-  <img src="./src/assets/example2.png" width="48%" />
+  <img src="./src/assets/example1.png" width="100%" />
+  <img src="./src/assets/example2.png" width="100%" />
 </p>
 
 ## Technologies
