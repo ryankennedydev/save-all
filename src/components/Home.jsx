@@ -9,27 +9,27 @@ import { Savecreate } from "./Savecreate";
 import { MdMore } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-export const Home = ({ darkmode, setDarkmode ,valueCheck, setValueCheck}) => {
+export const Home = ({ darkmode, setDarkmode, valueCheck, setValueCheck }) => {
   const [filtersearch, setFilter] = useState("");
   const [activesave, setActiveSave] = useState(true);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [cards, setCards] = useState([]);
   async function getCards() {
-      try {
-        const response = await fetch("http://localhost:3000/findCard");
-        const data = await response.json();
+    try {
+      const response = await fetch("http://localhost:3000/findCard");
+      const data = await response.json();
 
-        setCards(data);
-      } catch (error) {
-        {
-          console.log("erro", error);
-        }
+      setCards(data);
+    } catch (error) {
+      {
+        console.log("erro", error);
       }
     }
+  }
   useEffect(() => {
-    getCards()
+    getCards();
   }, []);
 
   return (
@@ -37,8 +37,11 @@ export const Home = ({ darkmode, setDarkmode ,valueCheck, setValueCheck}) => {
       className={`min-h-screen w-full transition-all duration-300 ease-in ${darkmode === false ? "bg-stone-100" : "bg-[#1B1818]"} `}
     >
       <Navbar darkmode={darkmode} setDarkmode={setDarkmode} />
-      <Savecreate activesave={activesave} setActiveSave={setActiveSave} onCardCreated={getCards}
-/>
+      <Savecreate
+        activesave={activesave}
+        setActiveSave={setActiveSave}
+        onCardCreated={getCards}
+      />
 
       <section className="p-10 w-full flex flex-col gap-10  ">
         <div className="flex gap-5 items-center justify-between">
@@ -69,11 +72,13 @@ export const Home = ({ darkmode, setDarkmode ,valueCheck, setValueCheck}) => {
           <main className="grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 grid">
             {cards
               .filter(
-  (e) =>
-    e.title.toLowerCase().includes(filtersearch.toLowerCase()) ||
-    e.description.toLowerCase().includes(filtersearch.toLowerCase()) ||
-    e.category.toLowerCase().includes(filtersearch.toLowerCase()),
-)
+                (e) =>
+                  e.title.toLowerCase().includes(filtersearch.toLowerCase()) ||
+                  e.description
+                    .toLowerCase()
+                    .includes(filtersearch.toLowerCase()) ||
+                  e.category.toLowerCase().includes(filtersearch.toLowerCase()),
+              )
               .map((item) => (
                 <div
                   key={item._id}
@@ -97,8 +102,8 @@ export const Home = ({ darkmode, setDarkmode ,valueCheck, setValueCheck}) => {
                       </h2>
                     </div>
                     <div className="flex flex-col gap-2">
-                      <h1 className="text-[20px] line-clamp-1 font-bold text-stone-100">
-                        {item.title}
+                      <h1 className="text-[20px] line-clamp-1 font-serif font-bold text-stone-100">
+                        {item.title.toUpperCase()}
                       </h1>
                       <p className="line-clamp-2 text-stone-400">
                         {item.description}
@@ -115,7 +120,13 @@ export const Home = ({ darkmode, setDarkmode ,valueCheck, setValueCheck}) => {
                         </div>
                       </div>
                       <div>
-                        <button onClick={(e) => {setValueCheck(item); navigate('/card')}} className="underline cursor-pointer pt-1">
+                        <button
+                          onClick={(e) => {
+                            setValueCheck(item);
+                            navigate("/card");
+                          }}
+                          className="underline cursor-pointer pt-1"
+                        >
                           <BiArrowBack
                             className="p-2 rounded-full rotate-180 text-stone-100 font-bold hover:rotate-160 transition-all duration-200 ease-in"
                             style={{ backgroundColor: item.color }}
@@ -130,15 +141,15 @@ export const Home = ({ darkmode, setDarkmode ,valueCheck, setValueCheck}) => {
           </main>
         ) : (
           <main className="flex justify-center  min-h-[500px] rounded-2xl items-center">
-
-            <div className="items-center flex flex-col gap-5"> 
-                <RiGhost2Fill className="text-stone-600" size={70}/>
-                <h1 className="font-bold text-stone-600" >Nenhum item encontrado</h1>
+            <div className="items-center flex flex-col gap-5">
+              <RiGhost2Fill className="text-stone-600" size={70} />
+              <h1 className="font-bold text-stone-600">
+                Nenhum item encontrado
+              </h1>
             </div>
-
           </main>
         )}
       </section>
     </main>
-  );  
+  );
 };

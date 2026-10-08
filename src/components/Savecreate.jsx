@@ -80,11 +80,11 @@ export const Savecreate = ({ activesave, setActiveSave, onCardCreated }) => {
               <h1>
                 Titulo<span className="text-blue-500"> *</span>
               </h1>
-              <h1 className="text-stone-400 text-[15px]">{lenghttitle}/20</h1>
+              <h1 className="text-stone-400 text-[15px]">{lenghttitle}/30</h1>
             </div>
             <input
               value={tittleValue}
-              maxLength={20}
+              maxLength={30}
               onChange={(e) => {
                 setTittleValue(e.target.value);
                 setLenghttittle(e.target.value.length);
@@ -100,11 +100,11 @@ export const Savecreate = ({ activesave, setActiveSave, onCardCreated }) => {
                 Descrição<span className="text-blue-500"> *</span>
               </h1>
               <h1 className="text-[15px] text-stone-400">
-                {lenghtdescription}/500
+                {lenghtdescription}/1000
               </h1>
             </div>
             <textarea
-              maxLength={500}
+              maxLength={1000}
               value={DescriptionValue}
               onChange={(e) => {
                 setLenghtDescription(e.target.value.length);
